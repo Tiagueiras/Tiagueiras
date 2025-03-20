@@ -1,10 +1,16 @@
-- 👋 Hi, I’m @Tiagueiras I'm very well
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on github
-- 📫 How to reach me ...
+SELECT a.title, a.summary, a.content, a.created, a.category_id, a.member_id,
+       c.name      AS category,
+       CONCAT(m.forename, ' ', m.surname) AS author,
+       i.file      AS image_file, 
+       i.alt       AS image_alt 
 
-<!---
-Tiagueiras/Tiagueiras is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+  FROM article     AS a
+  JOIN category    AS c   ON a.category_id = c.id
+  JOIN member      AS m   ON a.member_id   = m.id
+  LEFT JOIN image  AS i   ON a.image_id    = i.id
+
+ WHERE a.id        = 22
+   AND a.published = 1;
+
+   --ESSE ARQUIVO CONSULTA O REPOSITÓRIO E SEUS DETALHES DE ACORDO COM AS ESPECIFICAÇÕE
+   
